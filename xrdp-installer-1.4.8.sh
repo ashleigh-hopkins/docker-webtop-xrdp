@@ -582,24 +582,24 @@ then
     echo
     /bin/echo -e "\e[1;32m       |-|  Downloading xRDP Binaries.....     \e[0m" 
     echo
-    git clone https://github.com/neutrinolabs/xrdp.git --recursive
+    git clone https://github.com/Nexarian/xrdp.git --recursive
     
     echo 
     /bin/echo -e "\e[1;32m       |-|  Downloading xorgxrdp Binaries...     \e[0m" 
     echo
-    git clone https://github.com/neutrinolabs/xorgxrdp.git --recursive
+    git clone https://github.com/Nexarian/xorgxrdp.git --recursive
     LastReleaseXorgxrdp=$(git describe  --abbrev=0 --tags  | cut -dv -f2)
     LastReleaseXrdp=$(git describe  --abbrev=0 --tags  | cut -dv -f2)
 
 else
 
-LastReleaseXrdp=$(curl --silent "https://api.github.com/repos/neutrinolabs/xrdp/releases/latest" | jq -r .tag_name)
-git clone -b $LastReleaseXrdp  https://github.com/neutrinolabs/xrdp.git --recursive
+#LastReleaseXrdp=$(curl --silent "https://api.github.com/repos/neutrinolabs/xrdp/releases/latest" | jq -r .tag_name)
+git clone -b mainline_merge https://github.com/Nexarian/xrdp.git --recursive
 echo 
 /bin/echo -e "\e[1;32m       |-|  Downloading xorgxrdp Binaries...     \e[0m" 
 echo
-LastReleaseXorgxrdp=$(curl --silent "https://api.github.com/repos/neutrinolabs/xorgxrdp/releases/latest" | jq -r .tag_name)
-git clone -b $LastReleaseXorgxrdp  https://github.com/neutrinolabs/xorgxrdp.git --recursive
+#LastReleaseXorgxrdp=$(curl --silent "https://api.github.com/repos/neutrinolabs/xorgxrdp/releases/latest" | jq -r .tag_name)
+git clone -b mainline_merge https://github.com/Nexarian/xorgxrdp.git --recursive
 
 fi
 }
@@ -619,7 +619,7 @@ cd $Dwnload/xrdp
 pkgver1=${LastReleaseXrdp#?} 
 
 sudo ./bootstrap
-sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman
+sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman --enable-x264 --enable-nvenc
 sudo make
 
 #-- check if no error during compilation 
@@ -659,7 +659,7 @@ cd $Dwnload/xorgxrdp
 pkgver2=${LastReleaseXorgxrdp#?} 
 
 sudo ./bootstrap 
-sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman
+sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman --enable-x264 --enable-nvenc --with-simd --enable-lrandr
 sudo make
 
 # check if no error during compilation 

@@ -1,6 +1,12 @@
 FROM linuxserver/webtop:ubuntu-xfce
 
-RUN apt update
+RUN apt update && \
+	apt install wget -y && \
+	wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb &&\
+	dpkg -i cuda-keyring_1.1-1_all.deb &&\
+	apt-get update &&\
+	apt-get -y install cuda nvidia-utils-545
+
 COPY xrdp-installer-1.4.8.sh xrdp-installer-1.4.8.sh
 
 RUN ./xrdp-installer-1.4.8.sh -s
