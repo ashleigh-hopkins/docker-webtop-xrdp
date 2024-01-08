@@ -7,4 +7,4 @@ RUN ./xrdp-installer-1.4.8.sh -s
 
 RUN echo "abc:pass" | chpasswd
 COPY orig-startwm.sh /defaults/startwm.sh
-#COPY startwm.sh /etc/xrdp/startwm.sh
+COPY .xinitrc /home/abc/.xinitrc
