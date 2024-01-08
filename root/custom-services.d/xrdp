@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+echo "Hello world!"
+echo "abc:$RDP_PASS" | chpasswd
+/etc/init.d/dbus start
+/etc/init.d/xrdp start
+/etc/init.d/pulseaudio-enable-autospawn start
+
+echo "$FF_PARAMS" > /firefox-params && \
+	chmod 0655 /firefox-params
+
+while ps -p `cat /var/run/dbus/pid` > /dev/null; do sleep 1; done
