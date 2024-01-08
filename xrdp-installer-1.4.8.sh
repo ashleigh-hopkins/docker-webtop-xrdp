@@ -619,7 +619,7 @@ cd $Dwnload/xrdp
 pkgver1=${LastReleaseXrdp#?} 
 
 sudo ./bootstrap
-sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock
+sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman
 sudo make
 
 #-- check if no error during compilation 
@@ -659,7 +659,7 @@ cd $Dwnload/xorgxrdp
 pkgver2=${LastReleaseXorgxrdp#?} 
 
 sudo ./bootstrap 
-sudo ./configure 
+sudo ./configure --enable-fuse --enable-jpeg --enable-rfxcodec --enable-mp3lame --enable-vsock --enable-glamor --enable-fdkaac --enable-opus --enable-pixman
 sudo make
 
 # check if no error during compilation 
