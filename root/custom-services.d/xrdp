@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-echo "Hello world!"
+echo "xrdp start!"
 /etc/init.d/dbus stop
 /etc/init.d/xrdp stop
 /etc/init.d/pulseaudio-enable-autospawn stop
